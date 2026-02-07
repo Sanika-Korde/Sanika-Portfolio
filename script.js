@@ -1,6 +1,7 @@
 const navLinks = document.querySelectorAll(".nav-links a");
 const navMenu = document.querySelector(".nav-links");
 const menuToggle = document.querySelector(".menu-toggle");
+const body = document.body;
 
 navLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
@@ -14,6 +15,7 @@ navLinks.forEach((link) => {
     if (menuToggle) {
       menuToggle.setAttribute("aria-expanded", "false");
     }
+    body.classList.remove("nav-open");
   });
 });
 
@@ -21,6 +23,7 @@ if (menuToggle && navMenu) {
   menuToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    body.classList.toggle("nav-open", isOpen);
   });
 }
 
